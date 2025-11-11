@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic Introduction - Lesson 9</title>
+    <!-- Tailwind CSSを読み込みます -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Interフォントを読み込みます */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* 録音中アニメーション (パルスを削除し、色変更で対応) */
+        /* .recording {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        */
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl max-w-3xl w-full">
+        
+        <!-- アプリのタイトル -->
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
+            Lesson 9
+        </h1>
+
+        <!-- ★★★ Warm Up セクション (新規追加) ★★★ -->
+        <div id="warmup-section" class="mb-10 p-6 bg-gray-50 rounded-2xl shadow-inner">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-5">Warm Up</h2>
+            <ul class="space-y-4">
+                <!-- 質問1 -->
+                <li class="flex items-center justify-between gap-4">
+                    <p class="text-lg md:text-xl text-gray-800 flex-1">Q1. Do you want to play a lottery?</p>
+                    <button class="warmup-play-button text-blue-600 hover:text-blue-800 transition duration-300 p-2 rounded-full hover:bg-blue-100" 
+                            data-text="Do you want to play a lottery?">
+                        <!-- SVGアイコン（再生） -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                </li>
+                <!-- 質問2 -->
+                <li class="flex items-center justify-between gap-4">
+                    <p class="text-lg md:text-xl text-gray-800 flex-1">Q2. If you won the lottery, what would you do?</p>
+                    <button class="warmup-play-button text-blue-600 hover:text-blue-800 transition duration-300 p-2 rounded-full hover:bg-blue-100"
+                            data-text="If you won the lottery, what would you do?">
+                        <!-- SVGアイコン（再生） -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <!-- ★★★ Warm Up セクション (ここまで) ★★★ -->
+
+        <!-- Topic Introduction タイトル -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-6 text-center">
+            Topic Introduction
+        </h2>
+
+        <!-- 本文テキスト -->
+        <p id="main-text" class="text-gray-700 text-2xl md:text-3xl leading-relaxed md:leading-relaxed mb-8">
+            <span class="text-blue-600 font-bold">If</span> you <span class="text-blue-600 font-bold">became</span> a billionaire, what <span class="text-blue-600 font-bold">would</span> you <span class="text-blue-600 font-bold">do</span>? There are two things I <span class="text-blue-600 font-bold">would do</span>. First, I <span class="text-blue-600 font-bold">would visit</span> many countries and spend time living abroad. My dream is to work as part of the global community. To realize it, I want to learn about cultures in other countries. I <span class="text-blue-600 font-bold">wouldn’t learn</span> much <span class="text-blue-600 font-bold">if</span> I <span class="text-blue-600 font-bold">didn’t live</span> overseas. Second, I <span class="text-blue-600 font-bold">would donate</span> a lot of money to help people in need. I always wish for world peace. <span class="text-blue-600 font-bold">Without</span> the consideration of others, many people <span class="text-blue-600 font-bold">would face</span> difficultly in their daily lives.
+        </p>
+
+        <!-- ★★★ 日本語訳エリア (新規追加) ★★★ -->
+        <div id="translation-area" class="hidden p-4 bg-gray-50 border border-gray-200 rounded-lg mb-8 shadow-inner">
+            <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+                もしあなたが億万長者になったら、何をしますか？ 私がするであろうことは2つあります。まず、多くの国を訪れ、海外で生活する時間を過ごします。私の夢は、グローバルコミュニティの一員として働くことです。それを実現するために、他の国の文化について学びたいです。もし海外に住まなければ、多くを学ぶことはできないでしょう。次に、困っている人々を助けるために多額のお金を寄付します。私はいつも世界平和を願っています。他者への配慮がなければ、多くの人々が日常生活で困難に直面するでしょう。
+            </p>
+        </div>
+        <!-- ★★★ 日本語訳エリア (ここまで) ★★★ -->
+
+        <!-- 操作ボタンエリア -->
+        <div class="flex flex-wrap gap-4 justify-center mb-6">
+            <!-- 再生ボタン -->
+            <button id="play-button" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center">
+                <!-- SVGアイコン（再生） -->
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                お手本を聞く (Topic)
+            </button>
+            
+            <!-- 録音ボタン -->
+            <button id="record-button" class="bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-red-700 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center">
+                <!-- SVGアイコン（マイク） -->
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                録音して採点 (Topic)
+            </button>
+
+            <!-- ★★★ 日本語訳トグルボタン (新規追加) ★★★ -->
+            <button id="toggle-translation-button" class="bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center">
+                <!-- SVGアイコン（翻訳） -->
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m4 1h6m-7 4h7m-7 4h7m-7 4h7M3 21h18M3 17h12M3 13h12M3 9h12M3 5a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2H3z"></path></svg>
+                日本語訳を表示
+            </button>
+        </div>
+
+        <!-- ステータス・結果表示エリア -->
+        <div id="status-area" class="text-center p-4 bg-gray-50 rounded-lg min-h-[160px]">
+            <p id="status-message" class="text-gray-600 text-lg">「録音して採点」ボタンを押してマイクに話しかけてください。</p>
+            
+            <!-- 採点結果表示 -->
+            <div id="score-display" class="hidden mt-4">
+                <p class="text-xl font-bold text-gray-800">あなたのスコア:</p>
+                <p id="score-value" class="text-6xl font-bold text-blue-600 my-2">0</p>
+            </div>
+
+            <!-- 認識テキスト表示 -->
+            <div id="recognition-display" class="hidden mt-4">
+                <p class="text-md font-bold text-gray-700">認識されたテキスト:</p>
+                <p id="recognition-text" class="text-gray-600 italic"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const originalText = document.getElementById('main-text').innerText;
+            const playButton = document.getElementById('play-button');
+            const recordButton = document.getElementById('record-button');
+            const statusMessage = document.getElementById('status-message');
+            const scoreDisplay = document.getElementById('score-display');
+            const scoreValue = document.getElementById('score-value');
+            const recognitionDisplay = document.getElementById('recognition-display');
+            const recognitionText = document.getElementById('recognition-text');
+            
+            // --- ★★★ 日本語訳機能 (新規追加) ★★★ ---
+            const translationButton = document.getElementById('toggle-translation-button');
+            const translationArea = document.getElementById('translation-area');
+
+            translationButton.addEventListener('click', () => {
+                const isHidden = translationArea.classList.toggle('hidden');
+                
+                // ボタンのテキストを切り替え
+                if (isHidden) {
+                    translationButton.innerHTML = `
+                        <!-- SVGアイコン（翻訳） -->
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m4 1h6m-7 4h7m-7 4h7m-7 4h7M3 21h18M3 17h12M3 13h12M3 9h12M3 5a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2H3z"></path></svg>
+                        日本語訳を表示
+                    `;
+                } else {
+                    translationButton.innerHTML = `
+                        <!-- SVGアイコン（非表示） -->
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.29 3.29"></path></svg>
+                        日本語訳を隠す
+                    `;
+                }
+            });
+            // --- ★★★ (ここまで) ★★★ ---
+
+
+            let utterance = null;
+            let recognition = null;
+            let isRecording = false; // 録音状態を管理するフラグ
+            let finalRecognizedText = ''; // 認識されたテキストを蓄積する変数
+
+            // --- 1. 読み上げ機能 ---
+            
+            // 1a. 汎用読み上げ関数
+            function speakText(textToSpeak) {
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                }
+                utterance = new SpeechSynthesisUtterance(textToSpeak);
+                utterance.lang = 'en-US';
+                utterance.onend = () => console.log('Speech finished.');
+                utterance.onerror = (event) => console.error('Speech synthesis error:', event.error);
+                speechSynthesis.speak(utterance);
+            }
+
+            // 1b. Topic Introduction の読み上げボタン
+            playButton.addEventListener('click', () => {
+                if ('speechSynthesis' in window) {
+                    speakText(originalText); // メインテキストを渡す
+                } else {
+                    statusMessage.textContent = 'お使いのブラウザは音声読み上げに対応していません。';
+                }
+            });
+
+            // 1c. Warm Up の読み上げボタン (新規追加)
+            const warmupButtons = document.querySelectorAll('.warmup-play-button');
+            warmupButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const textToPlay = button.getAttribute('data-text');
+                    if ('speechSynthesis' in window && textToPlay) {
+                        speakText(textToPlay); // data-text の内容を読み上げ
+                    } else if (!('speechSynthesis' in window)) {
+                        statusMessage.textContent = 'お使いのブラウザは音声読み上げに対応していません。';
+                    }
+                });
+            });
+
+            // --- 2. 録音・採点機能 (Web Speech API) ---
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.lang = 'en-US';
+                // interimResults を true に設定し、中間結果も取得する
+                recognition.interimResults = true; 
+                recognition.maxAlternatives = 1;
+                // 録音が途中で終わらないように continuous を true に設定
+                recognition.continuous = true; 
+
+                // 録音ボタンの処理
+                recordButton.addEventListener('click', () => {
+                    // 録音中の場合は停止
+                    if (isRecording) {
+                        try {
+                            recognition.stop();
+                        } catch(e) {
+                            console.error("Error stopping recognition:", e);
+                        }
+                        return;
+                    }
+                    
+                    // マイクへのアクセス許可を試みる
+                    navigator.mediaDevices.getUserMedia({ audio: true })
+                        .then(() => {
+                            startRecognition();
+                        })
+                        .catch((err) => {
+                            console.error('Microphone access denied:', err);
+                            statusMessage.textContent = 'マイクへのアクセスが拒否されました。ブラウザの設定を確認してください。';
+                        });
+                });
+
+                function startRecognition() {
+                    if (speechSynthesis.speaking) {
+                        speechSynthesis.cancel();
+                    }
+                    // 録音開始時に蓄積テキストをリセット
+                    finalRecognizedText = ''; 
+                    
+                    try {
+                        recognition.start();
+                    } catch(e) {
+                        console.error("Recognition already started.", e);
+                    }
+                }
+
+                // 認識開始
+                recognition.onstart = () => {
+                    isRecording = true;
+                    // recordButton.classList.add('recording'); // アニメーション削除
+                    recordButton.classList.add('bg-yellow-500');
+                    recordButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                    recordButton.classList.add('hover:bg-yellow-600');
+                    recordButton.innerHTML = `
+                        <!-- SVGアイコン（停止） -->
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12v0a9 9 0 01-9 9s-9-4.03-9-9V6a9 9 0 0118 0v6zM9 12v0"></path><path d="M15 12v0"></path></svg>
+                        ■ 録音停止
+                    `;
+                    statusMessage.textContent = '録音中です... 完了したら停止ボタンを押してください。';
+                    scoreDisplay.classList.add('hidden');
+                    recognitionDisplay.classList.add('hidden');
+                };
+
+                // 認識終了
+                recognition.onend = () => {
+                    isRecording = false;
+                    // ... (ボタンのUI変更) ...
+                    recordButton.classList.remove('bg-yellow-500', 'hover:bg-yellow-600');
+                    recordButton.classList.add('bg-red-600', 'hover:bg-red-700');
+                    recordButton.innerHTML = `
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                        もう一度録音
+                    `;
+                    
+                    // エラーで既にメッセージが表示されているか確認
+                    const currentStatus = statusMessage.textContent;
+                    const isErrorStatus = currentStatus.includes('エラー') || currentStatus.includes('失敗') || currentStatus.includes('ません');
+
+                    if (finalRecognizedText.trim().length > 0) {
+                        // 蓄積された最終テキストで採点
+                        const recognizedTextContent = finalRecognizedText.trim();
+                        
+                        recognitionText.textContent = recognizedTextContent;
+                        recognitionDisplay.classList.remove('hidden');
+                        
+                        const score = calculateScore(originalText, recognizedTextContent);
+                        scoreValue.textContent = score;
+                        scoreDisplay.classList.remove('hidden');
+                        statusMessage.textContent = '採点が完了しました！';
+
+                    } else if (!isErrorStatus) {
+                        // エラーでもなく、テキストも空の場合
+                        statusMessage.textContent = '音声が認識されませんでした。もう一度お試しください。';
+                    }
+                    
+                    // 蓄積変数をリセット (onstartでもリセットするが念のため)
+                    finalRecognizedText = '';
+                };
+
+                // 結果取得
+                recognition.onresult = (event) => {
+                    let interimText = '';
+                    // 認識結果をループ
+                    for (let i = event.resultIndex; i < event.results.length; ++i) {
+                        const transcript = event.results[i][0].transcript;
+                        if (event.results[i].isFinal) {
+                            // 最終結果（文の区切りなど）を蓄積
+                            finalRecognizedText += transcript + ' ';
+                        } else {
+                            // 中間結果（まだ確定していない）
+                            interimText += transcript;
+                        }
+                    }
+
+                    // ユーザーに認識中であることをフィードバック
+                    if (interimText) {
+                        statusMessage.textContent = '認識中: ' + interimText;
+                    }
+                };
+
+                // エラー処理
+                recognition.onerror = (event) => {
+                    if (event.error === 'no-speech') {
+                        statusMessage.textContent = '音声が認識されませんでした。もう一度試してください。';
+                    } else if (event.error === 'audio-capture') {
+                        statusMessage.textContent = 'マイクの取得に失敗しました。';
+                    } else if (event.error === 'not-allowed') {
+                        statusMessage.textContent = 'マイクへのアクセスが許可されていません。';
+                    } else {
+                        statusMessage.textContent = `エラーが発生しました: ${event.error}`;
+                    }
+                    console.error('Speech recognition error:', event.error);
+                };
+
+            } else {
+                // SpeechRecognition API 非対応
+                recordButton.disabled = true;
+                statusMessage.textContent = 'お使いのブラウザは音声認識（録音）に対応していません。(ChromeやEdgeをお試しください)';
+            }
+
+            // --- 3. 採点ロジック ---
+
+            // テキストの正規化（小文字化、句読点削除）
+            function normalizeText(text) {
+                return text.toLowerCase()
+                           .replace(/[.,!?;:"']/g, '') // 句読点を削除
+                           .trim();
+            }
+
+            // 甘めの採点ロジック
+            function calculateScore(original, recognized) {
+                const originalNorm = normalizeText(original);
+                const recognizedNorm = normalizeText(recognized);
+
+                if (recognizedNorm.length === 0) {
+                    return 0; // 何も認識されなかった場合
+                }
+
+                const originalWords = originalNorm.split(/\s+/); // スペースで単語に分割
+                const recognizedWords = recognizedNorm.split(/\s+/);
+                
+                let matches = 0;
+                const recognizedWordsSet = new Set(recognizedWords);
+
+                // 元のテキストの単語が、認識されたテキストにどれだけ含まれているか
+                originalWords.forEach(word => {
+                    if (recognizedWordsSet.has(word)) {
+                        matches++;
+                    }
+                });
+
+                // 一致率を計算
+                let percentage = (matches / originalWords.length) * 100;
+
+                // 甘めのスコア調整
+                let score = 0;
+                if (percentage >= 90) {
+                    score = 100;
+                } else if (percentage >= 80) {
+                    score = 90 + Math.round((percentage - 80) * 0.5); // 90-95点
+                } else if (percentage >= 70) {
+                    score = 80 + Math.round(percentage - 70); // 80-90点
+                } else if (percentage >= 50) {
+                    score = 70 + Math.round((percentage - 50) * 0.5); // 70-80点
+                } else if (percentage >= 30) {
+                    score = 60 + Math.round((percentage - 30) * 0.5); // 60-70点
+                } else {
+                    score = Math.round(percentage * 2); // 0-60点 (低くても2倍に)
+                }
+
+                // 認識された単語数が極端に少ない場合は減点（ただし甘め）
+                if (recognizedWords.length < originalWords.length / 3) {
+                     score = Math.max(0, score - 20);
+                }
+
+                return Math.min(100, Math.max(0, score)); // 0-100の範囲に収める
+            }
+
+
+            // ページを離れるときに音声を停止
+            window.addEventListener('beforeunload', () => {
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                }
+                if (recognition) {
+                    recognition.abort();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
